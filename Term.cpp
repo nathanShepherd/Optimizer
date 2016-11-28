@@ -2,40 +2,29 @@
 
 Classes related to Math architecture
 
-Term is a class for creating a group of data types
-	that correspond to to an n-th term polynomial.
+Poly is a class for creating Polynomial structure.
 
 */
-#include <iostream>
+
+#pragma once
 #include "Term.h"
 using namespace std;
 
-Term::Term(int a, char b, int pwr) {
-	coef = a;
-	base = b;
-	power = pwr;
-}
+class Poly {
+private:
+	//array 'nomial' contains numerator Terms in rows
+	//and denominator Terms in columns
+	int const rowMax = 2;
+	int const colMax = 8;
+	int numTermsNum = 0;
+	int numTermsDom = 0;
+	Term nomial[2][8];
 
-void Term::setCoef(int a) { 
-	coef = a; 
-}
-void Term::setPower(int pwr) { 
-	power = pwr; 
-}
-void Term::setBase(char b) { 
-	base = b; 
-}
+public:
+	Poly();
 
-int Term::getCoef() { 
-	return coef;
-}
-int Term::getPower() { 
-	return power; 
-}
-char Term::getBase() { 
-	return base; 
-}
+	void setTerm(Term newTerm, bool isNumerator);
+	Term getTerm(bool isNumerator, int termPosition);
+	void print();
 
-void Term::print() {
-	cout << getCoef() << getBase() << '^' << getPower();
-}
+};
