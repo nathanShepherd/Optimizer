@@ -1,2 +1,2 @@
 # Optimizer
-Module for optimizing data
+Module for computing derivatives of polynomials
